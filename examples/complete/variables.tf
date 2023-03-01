@@ -1,10 +1,12 @@
 variable "region" {
-  type = string
+  type        = string
+  description = "Region"
 }
 
 variable "bucket_acl" {
-  type    = string
-  default = "private"
+  type        = string
+  default     = "private"
+  description = "Bucket ACLs"
 }
 
 variable "name" {
@@ -25,4 +27,5 @@ variable "vpc_id" {
 variable "webserver_access_mode" {
   type        = string
   default     = "PUBLIC_ONLY"
+  description = "Specifies whether the webserver should be accessible over the internet or via your specified VPC."
 }

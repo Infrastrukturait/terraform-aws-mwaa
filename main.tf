@@ -1,15 +1,16 @@
 locals {
-    security_group_ids     = var.create_security_group ? concat(aws_security_group.this.*.id, var.additional_associated_security_group_ids) : var.associated_security_group_ids
+  security_group_ids = var.create_security_group ? concat(aws_security_group.this[*].id, var.additional_associated_security_group_ids) : var.associated_security_group_ids
 }
 
 resource "aws_security_group" "this" {
-  count  = var.create_security_group ? 1 : 0
+  count = var.create_security_group ? 1 : 0
 
-  vpc_id = var.vpc_id
-  name   = "mwaa-${var.environment_name}-no-ingress-sg"
-  tags   = merge({
+  vpc_id      = var.vpc_id
+  name        = "mwaa-${var.environment_name}-no-ingress-sg"
+  description = var.security_group_description
+  tags = merge({
     Name = "mwaa-${var.environment_name}-no-ingress-sg"
-  }, var.tags  )
+  }, var.tags)
   ingress {
     from_port = 0
     to_port   = 0
@@ -17,9 +18,9 @@ resource "aws_security_group" "this" {
     self      = true
   }
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
     cidr_blocks = [
       "0.0.0.0/0"
     ]

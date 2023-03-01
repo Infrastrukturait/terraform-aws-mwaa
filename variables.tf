@@ -28,8 +28,9 @@ variable "plugins_s3_path" {
 }
 
 variable "plugins_s3_object_version" {
-  default = null
-  type    = string
+  default     = null
+  type        = string
+  description = "The plugins.zip file version you want to use."
 }
 
 variable "requirements_s3_path" {
@@ -39,8 +40,9 @@ variable "requirements_s3_path" {
 }
 
 variable "requirements_s3_object_version" {
-  default = null
-  type    = string
+  default     = null
+  type        = string
+  description = "The requirements.txt file version you want to use."
 }
 
 variable "airflow_configuration_options" {
@@ -113,8 +115,12 @@ variable "min_workers" {
 }
 
 variable "environment_class" {
-  type    = string
-  default = "mw1.small"
+  type        = string
+  default     = "mw1.small"
+  description = <<-EOT
+    Environment class for the cluster. Possible options are `mw1.small`, `mw1.medium`, `mw1.large`. Will be set by default to `mw1.small`.
+    Please check the [AWS Pricing](https://aws.amazon.com/de/managed-workflows-for-apache-airflow/pricing/) for more information about the environment classes.
+  EOT
 }
 
 variable "webserver_access_mode" {
@@ -140,14 +146,15 @@ variable "kms_key_arn" {
 }
 
 variable "tags" {
-  type    = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
   description = "Map of tags to assign to bucket."
 }
 
 variable "dag_processing_logs_enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Enabling or disabling the collection of logs"
 }
 
 variable "dag_processing_logs_level" {
@@ -161,8 +168,9 @@ variable "dag_processing_logs_level" {
 }
 
 variable "scheduler_logs_enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Enabling or disabling the collection of logs"
 }
 
 variable "scheduler_logs_level" {
@@ -176,8 +184,9 @@ variable "scheduler_logs_level" {
 }
 
 variable "task_logs_enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Enabling or disabling the collection of logs"
 }
 
 variable "task_logs_level" {
@@ -191,8 +200,9 @@ variable "task_logs_level" {
 }
 
 variable "webserver_logs_enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Enabling or disabling the collection of logs"
 }
 
 variable "webserver_logs_level" {
@@ -206,8 +216,9 @@ variable "webserver_logs_level" {
 }
 
 variable "worker_logs_enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Enabling or disabling the collection of logs"
 }
 
 variable "worker_logs_level" {
