@@ -1,11 +1,21 @@
 {
-  "name": "",
-  "repo_url": "",
+  "name": "terraform-aws-mwaa",
+  "repo_url": "https://github.com/Infrastrukturait/terraform-aws-mwaa",
   "license": "GPLv3",
-  "logo": "",
-  "badges": [],
-  "includes": [],
-  "authors": [],
-  "context": [],
-  "references": []
+  "includes": [
+    "docs/terraform.md"
+  ],
+  "authors": [
+    {
+      "name": "Rafał Masiarek",
+      "email": "rafal@masiarek.pl",
+      "github": "rafalmasiarek",
+      "website": "https://masiarek.pl"
+    }
+  ],
+  "context": [
+    "## About",
+    "Terraform module to create [Amazon MWAA (Managed Workflows for Apache Airflow)](https://aws.amazon.com/managed-workflows-for-apache-airflow/).",
+    "Amazon Managed Workflows for Apache Airflow (MWAA) orchestrates your workflows using Directed Acyclic Graphs (DAGs) written in Python.", 
+  ]
 }
