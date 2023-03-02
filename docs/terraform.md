@@ -102,6 +102,7 @@ module "app_prod_airflow_bucket" {
   version     = "0.4.0"
   bucket_name = join(module.app_prod_airflow_label.delimiter, [module.app_prod_airflow_label.stage, module.app_prod_airflow_label.name])
   bucket_acl  = var.bucket_acl
+  versioning  = true
 
   tags = module.app_prod_airflow_label.tags
 }
